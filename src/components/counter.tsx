@@ -6,10 +6,17 @@ import { forCounterDispatch } from "../containers/counter";
 
 type Count = forCounterState & forCounterDispatch;
 
-const Count: FC<Count> = ({ count, increse, decrese, countreset }) => {
+const Count: FC<Count> = ({
+  count,
+  increse,
+  decrese,
+  countreset,
+  onIncrementAsync,
+}) => {
   return (
     <>
       <h1>カウンター</h1>
+      <button onClick={onIncrementAsync}>Increment after 1 second</button>
       <input type="button" value="ぷらす" onClick={increse} />
       <input type="button" value="まいなす" onClick={decrese} />
       <input type="button" value="リセット" onClick={countreset} />

@@ -15,6 +15,7 @@ const mapDispatchtoProps = (dispatch: Dispatch) => ({
   increse: () => dispatch({ type: "INCREMENT" }),
   decrese: () => dispatch({ type: "DECREMENT" }),
   countreset: () => dispatch({ type: "COUNTRESET" }),
+  onIncrementAsync: () => dispatch({ type: "INCREMENT_ASYNC" }),
 });
 
 export type forCounterState = ReturnType<typeof mapStatetoProps>;

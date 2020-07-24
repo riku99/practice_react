@@ -1,4 +1,8 @@
-type CounterActionsType = "INCREMENT" | "DECREMENT" | "COUNTRESET";
+type CounterActionsType =
+  | "INCREMENT"
+  | "DECREMENT"
+  | "COUNTRESET"
+  | "INCREMENT_ASYNC";
 
 export type CounterAction = {
   type: CounterActionsType;

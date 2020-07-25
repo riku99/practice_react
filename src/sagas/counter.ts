@@ -1,5 +1,7 @@
 import { all, put, takeEvery } from "redux-saga/effects";
 
+import { watchGetBooks } from "./books";
+
 export function* helloSaga() {
   console.log("Hello Saga");
   yield true;
@@ -31,5 +33,5 @@ export function* watchIncrementAsync() {
 // この場合はこのようなrootSagaなどを生成し同時に複数のsagaを実行することができる
 // つまりここでは2つの関数の実行結果が配列となりyieldされ、これらは平行に実行される。
 export default function* rootSaga() {
-  yield all([helloSaga(), watchIncrementAsync()]);
+  yield all([helloSaga(), watchIncrementAsync(), watchGetBooks()]);
 }

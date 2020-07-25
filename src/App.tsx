@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Count from "./containers/counter";
 import Home from "./components/Home";
-import Books from "./components/books";
+import Books from "./containers/books";
 
 const App = () => {
   return (

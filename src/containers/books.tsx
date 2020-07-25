@@ -9,7 +9,10 @@ const mapStateToProps = (state: initialState) => {
   return {
     title: state.book.title,
     authors: state.book.authors,
-    message: state.message ? state.message.errorMessage : null,
+    message:
+      state.message && state.message.errorMessage
+        ? state.message.errorMessage
+        : null,
   };
 };
 

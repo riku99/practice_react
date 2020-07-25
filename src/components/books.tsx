@@ -4,7 +4,7 @@ import { forStateProps, forDispatchProps } from "../containers/books";
 
 type BooksStateType = forStateProps & forDispatchProps;
 
-const Books: FC<BooksStateType> = ({ title, authors, getBook, message }) => {
+const Books: FC<BooksStateType> = ({ title, authors, message, getBook }) => {
   return (
     <>
       <div>{title}</div>

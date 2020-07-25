@@ -1,5 +1,4 @@
 import { Reducer } from "redux";
-import { AxiosError } from "axios";
 
 // 型定義ファイルReducerに渡す第二ジェネリックは発行されて送られてくるActionの型でなければならず、それにはtypeプロパティが含まれなくてはならない
 import { CounterAction } from "./actions/counter";
@@ -9,14 +8,14 @@ import { BooksAction } from "./actions/books";
 export type initialState = {
   count: number;
   book: { title: string; authors: string[] };
-  message: null | { errorMessage: AxiosError | string };
+  message: null | { errorMessage?: string };
 };
 
 type Actions = CounterAction | BooksAction;
 
 // 最初に呼ばれるとき(createStoreに渡される時)はStateは定義されていないのでstateパラにデフォルトを与える
 // Stateが定義されている場合はそれはstateパラに渡される
-// Reducerのジェネリックは<state, reducer>の型を定義。reducerは必ずステイトを返すため戻り値のところにはstate型を定義
+// Reducerのジェネリックは<state, action>の型を定義。reducerは必ずステイトを返すため戻り値のところにはstate型を定義
 const reducer: Reducer<initialState, Actions> = (
   state = {
     message: null,

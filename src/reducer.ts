@@ -7,8 +7,9 @@ import { BooksAction } from "./actions/books";
 // 初期化されるstoreの型。storeにプロパティを追加する時や削除するときはこれも変更する
 export type initialState = {
   count: number;
-  book: { title: string; authors: string[] };
+  book: { title: string; authors: string[]; image: string | null };
   message: null | { errorMessage?: string };
+  savedBook: { title: string; authors: string[]; image: string | null }[] | [];
 };
 
 type Actions = CounterAction | BooksAction;
@@ -20,7 +21,8 @@ const reducer: Reducer<initialState, Actions> = (
   state = {
     message: null,
     count: 0,
-    book: { title: "未選択", authors: ["未選択"] },
+    book: { title: "未選択", authors: ["未選択"], image: null },
+    savedBook: [],
   },
   action
 ): initialState => {
@@ -40,7 +42,11 @@ const reducer: Reducer<initialState, Actions> = (
       return {
         ...state,
         message: null,
-        book: { title: action.data.title, authors: action.data.authors },
+        book: {
+          title: action.data.title,
+          authors: action.data.authors,
+          image: action.data.image ? action.data.image : null,
+        },
       };
     }
 
@@ -49,6 +55,15 @@ const reducer: Reducer<initialState, Actions> = (
       return {
         ...state,
         message: { errorMessage: action.message },
+      };
+    }
+
+    case "SAVE_BOOK": {
+      let a = [...state.savedBook, action.book];
+      return {
+        ...state,
+        message: null,
+        savedBook: a,
       };
     }
 

@@ -15,7 +15,9 @@ const getGoogleApi = async (url: string) => {
 
   let authors = response.data.items[0].volumeInfo.authors;
 
-  let data = { title: title, authors: authors };
+  let image = response.data.items[0].volumeInfo.imageLinks.smallThumbnail;
+
+  let data = { title: title, authors: authors, image: image };
 
   return data;
 };
